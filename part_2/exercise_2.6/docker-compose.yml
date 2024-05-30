@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    environment:
+      - REQUEST_ORIGIN=http://localhost:3456
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE=postgres
+      - REDIS_HOST=redis
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3456:3456"
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8080
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+
+  redis:
+    image: "redis:alpine"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -20,3 +20,5 @@ within the folders each exercise has a markdown file `exercise_X.Y.md` where `X`
         exercise_1.Y.md
     exercise_1.Z.md
 ```
+
+NOTE: In part 2 we delete the databases so as to not push them to github, yet they are automatically created when running docker compose for problems 2.7-2.9
