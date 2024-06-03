@@ -1,8 +1,12 @@
-const express = require('express') const app =
-    express()
+const express = require('express')
+const app = express()
 
-        app.get('/', (req, res) = > {res.send('<h1>This is a change!</h1>')})
+app.get('/', (req, res) => {
+  res.send('<h1>This is a change!</h1>')
+})
 
-            const PORT = 8080
+const PORT = 8080
 
-                         app.listen(PORT, () = > {console.log(`Server running on port $ { PORT }`)})
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
