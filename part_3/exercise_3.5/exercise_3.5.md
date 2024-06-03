@@ -1,0 +1,1 @@
+Both `backend/Dockerfile` and `frontend/Dockerfile` were modified to run without root user
