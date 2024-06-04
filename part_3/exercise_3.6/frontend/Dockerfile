@@ -1,6 +1,5 @@
 FROM ubuntu:22.04
 
-# Install dependencies, setup Node.js, install global npm packages, clone repo, build project, create non-root user, and clean up
 RUN apt-get update && \
     apt-get install -y curl git && \
     curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
@@ -17,12 +16,9 @@ RUN apt-get update && \
     useradd -m appuser && \
     chown -R appuser /material-applications
 
-# Switch to non-root user
 USER appuser
 
-# Set working directory
 WORKDIR /material-applications/example-frontend
 
-# Expose port and set command
 EXPOSE 3456
 CMD ["serve", "-s", "-l", "3456", "build"]
